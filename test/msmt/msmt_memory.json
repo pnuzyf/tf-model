@@ -228,7 +228,7 @@
     {"name": "a_province", "dtype": "int64",  "vocab_size": 36, "embedding_name": "a_province_emb", "hash_type": "mod","embedding_dim":8},
     {"name": "a_kaibo_type", "dtype": "int64", "vocab_size": 4, "embedding_name": "a_kaibo_type_emb", "hash_type": "mod","embedding_dim":8},
     {"name": "anchor_id", "dtype": "int64",  "vocab_size": 20000, "embedding_name": "anchor_id_emb", "hash_type": "mod","embedding_dim":32},
-    {"name": "u_click_seq_new", "dtype": "int64", "val_sep": "|", "vocab_size": 20000, "embedding_name": "anchor_id_emb", "embedding_dim":32, "embedding_combiner":"mean", "max_len":50},
+    {"name": "u_click_seq_new", "dtype": "int64", "val_sep": "|", "vocab_size": 20000, "embedding_name": "anchor_id_emb", "embedding_dim":32, "embedding_combiner":"din", "query": ["anchor_id"], "max_len":50},
     {"name": "a_kaibo_period", "dtype": "int64", "val_sep": "|", "vocab_size": 7, "embedding_name": "a_kaibo_period_emb", "weight_col": "a_kaibo_period_weight", "embedding_dim":8},
     {"name": "a_kaibo_period_weight", "dtype": "float32",  "val_sep": "|"},
     {"name": "u_pre_singer", "dtype": "int64", "val_sep": "|", "vocab_size": 200000, "embedding_dim":64, "embedding_name": "u_pre_singer_emb", "weight_col": "u_pre_singer_weight"},

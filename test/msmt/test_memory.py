@@ -15,10 +15,10 @@ if __name__ == "__main__":
     import tensorflow as tf
 
     # tf.config.run_functions_eagerly(True)
-    config_file = '/Users/fabriszhou/PycharmProjects/tf-model/test/msmt/msmt_memory.json'
-    export_path = '/Users/fabriszhou/PycharmProjects/tf-model/test/msmt/runs'
-    pack_path = '/Users/fabriszhou/PycharmProjects/tf-model/test/msmt'
-    data_path = '/Users/fabriszhou/PycharmProjects/tf-model/test/msmt/part-00007'
+    config_file = '/Users/fabriszhou/PycharmProjects/my-personal/tf-model/test/msmt/msmt_memory.json'
+    export_path = '/Users/fabriszhou/PycharmProjects/my-personal/tf-model/test/msmt/runs'
+    pack_path = '/Users/fabriszhou/PycharmProjects/my-personal/tf-model/test/msmt'
+    data_path = '/Users/fabriszhou/PycharmProjects/my-personal/tf-model/test/msmt/part-00007'
 
 
     input = ModelInputConfig.parse(config_file, pack_path, export_path)
@@ -90,8 +90,8 @@ if __name__ == "__main__":
         tf.keras.metrics.MeanSquaredError()]}
     )
     model.fit(ds, epochs=1)
-    # model.evaluate(ds)
-    mymodel = model.get_train_model()
-    mymodel.save('ple-din')
+    model.evaluate(ds)
+    # mymodel = model.get_train_model()
+    # mymodel.save('ple-din')
 
     # plot_model(model, to_file='model.png')

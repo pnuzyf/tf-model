@@ -18,7 +18,7 @@ if __name__ == "__main__":
     config_file = '/Users/fabriszhou/PycharmProjects/tf-model/test/msmt/msmt_memory.json'
     export_path = '/Users/fabriszhou/PycharmProjects/tf-model/test/msmt/runs'
     pack_path = '/Users/fabriszhou/PycharmProjects/tf-model/test/msmt'
-    data_path = '/Users/fabriszhou/PycharmProjects/tf-model/test/msmt/part-00006'
+    data_path = '/Users/fabriszhou/PycharmProjects/tf-model/test/msmt/part-00007'
 
 
     input = ModelInputConfig.parse(config_file, pack_path, export_path)

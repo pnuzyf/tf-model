@@ -1,0 +1,90 @@
+{
+    "namespace": "pipeline",
+    "num_workers": 6,
+    "node_affin": "only_cpu",
+    "pod_affin": "spread",
+    "timeout": "100d",
+    "trainer": "runner",
+    "resources": {
+        "limits": {
+            "memory": "30G",
+            "cpu": "30"
+        }
+    },
+    "job_detail": {
+        "model_input_config_file": "${PACK_PATH}$/deepfm_attention/model_input.json",
+        "model_args": {
+            "k": 24,
+            "dnn_hidden_layers": [
+                64,
+                48
+            ],
+            "dnn_hidden_act_fn": "lrelu",
+            "dnn_l2_reg": 0.01,
+            "embedding_l2_reg": 0.01,
+            "name": "deepfm_weight_cut"
+        },
+        "train_data_args": {
+            "data_file": "${DATA_PATH}$/train_data/part-*",
+            "file_type": "csv",
+            "field_delim": ",",
+            "with_headers": false,
+            "headers": "ftime,logid,uin,item_id,moment_id,is_click,weight,log_days,net_day,square_clicknum_3d,square_clicknum_15d,square_fig_clicknum_7d,square_fig_clicknum_15d,square_video_clicknum_15d,square_fig_viewtime_3d,square_fig_viewtime_7d,square_fig_viewtime_15d,total_viewcnt_1d,total_viewcnt_3d,total_viewcnt_7d,total_viewcnt_15d,total_viewtime_1d,total_viewtime_3d,total_viewtime_7d,total_viewtime_15d,total_favorcnt_15d,click_num_3d,click_num_15d,favor_num_1d,favor_num_15d,share_num_7d,share_num_15d,comment_num_1d,comment_num_3d,comment_num_7d,comment_num_15d,feed_page_time_3d,feed_page_time_7d,feed_page_time_15d,detail_page_time_7d,detail_page_time_15d,video_playtime_1d,video_playtime_7d,video_playtime_15d,video_duration,freshness,validity_level,example_age,age_level,sex,degree,income_level,city_level,is_kg,is_dapan,os_type,moment_type,is_weixin,cur_hour,pics_num,group_id,publisher_id,singer_profile_sim_avg_7d,singer_profile_sim_max_7d,singer_profile_sim_avg_long,singer_profile_sim_max_long,user_op_avg_sim,user_op_max_sim,ctr_current,ctr_short,ctr_near,playtime_score_short,playtime_score_near,read_score_current,read_score_short,cate_first,cate_second,cate_third,cate_1_7d,cate_1_15d,cate_1_30d,cate_1_90d,cate_2_7d,cate_2_15d,cate_2_30d,cate_2_90d,cate_3_7d,cate_3_15d,cate_3_30d,cate_3_90d,group_90d,publisher_90d,cate_first_weight,cate_second_weight,cate_third_weight,cate_1_7d_weight,cate_1_15d_weight,cate_1_30d_weight,cate_1_90d_weight,cate_2_7d_weight,cate_2_15d_weight,cate_2_30d_weight,cate_2_90d_weight,cate_3_7d_weight,cate_3_15d_weight,cate_3_30d_weight,cate_3_90d_weight,group_90d_weight,publisher_90d_weight",
+            "shard_policy": "FILE"
+        },
+        "test_data_args": {
+            "model_input_config_file": "${PACK_PATH}$/deepfm_attention/model_input_test.json",
+            "data_file": "${DATA_PATH}$/val_data/part-*",
+            "file_type": "csv",
+            "field_delim": ",",
+            "with_headers": false,
+            "headers": "ftime,logid,uin,item_id,moment_id,is_click,log_days,net_day,square_clicknum_3d,square_clicknum_15d,square_fig_clicknum_7d,square_fig_clicknum_15d,square_video_clicknum_15d,square_fig_viewtime_3d,square_fig_viewtime_7d,square_fig_viewtime_15d,total_viewcnt_1d,total_viewcnt_3d,total_viewcnt_7d,total_viewcnt_15d,total_viewtime_1d,total_viewtime_3d,total_viewtime_7d,total_viewtime_15d,total_favorcnt_15d,click_num_3d,click_num_15d,favor_num_1d,favor_num_15d,share_num_7d,share_num_15d,comment_num_1d,comment_num_3d,comment_num_7d,comment_num_15d,feed_page_time_3d,feed_page_time_7d,feed_page_time_15d,detail_page_time_7d,detail_page_time_15d,video_playtime_1d,video_playtime_7d,video_playtime_15d,video_duration,freshness,validity_level,example_age,age_level,sex,degree,income_level,city_level,is_kg,is_dapan,os_type,moment_type,is_weixin,cur_hour,pics_num,group_id,publisher_id,singer_profile_sim_avg_7d,singer_profile_sim_max_7d,singer_profile_sim_avg_long,singer_profile_sim_max_long,user_op_avg_sim,user_op_max_sim,ctr_current,ctr_short,ctr_near,playtime_score_short,playtime_score_near,read_score_current,read_score_short,cate_first,cate_second,cate_third,cate_1_7d,cate_1_15d,cate_1_30d,cate_1_90d,cate_2_7d,cate_2_15d,cate_2_30d,cate_2_90d,cate_3_7d,cate_3_15d,cate_3_30d,cate_3_90d,group_90d,publisher_90d,cate_first_weight,cate_second_weight,cate_third_weight,cate_1_7d_weight,cate_1_15d_weight,cate_1_30d_weight,cate_1_90d_weight,cate_2_7d_weight,cate_2_15d_weight,cate_2_30d_weight,cate_2_90d_weight,cate_3_7d_weight,cate_3_15d_weight,cate_3_30d_weight,cate_3_90d_weight,group_90d_weight,publisher_90d_weight",
+            "shard_policy": "FILE"
+        },
+        "val_data_args": {
+            "model_input_config_file": "${PACK_PATH}$/deepfm_attention/model_input_test.json",
+            "data_file": "${DATA_PATH}$/test_data/part-*",
+            "file_type": "csv",
+            "field_delim": ",",
+            "with_headers": false,
+            "headers": "ftime,logid,uin,item_id,moment_id,is_click,log_days,net_day,square_clicknum_3d,square_clicknum_15d,square_fig_clicknum_7d,square_fig_clicknum_15d,square_video_clicknum_15d,square_fig_viewtime_3d,square_fig_viewtime_7d,square_fig_viewtime_15d,total_viewcnt_1d,total_viewcnt_3d,total_viewcnt_7d,total_viewcnt_15d,total_viewtime_1d,total_viewtime_3d,total_viewtime_7d,total_viewtime_15d,total_favorcnt_15d,click_num_3d,click_num_15d,favor_num_1d,favor_num_15d,share_num_7d,share_num_15d,comment_num_1d,comment_num_3d,comment_num_7d,comment_num_15d,feed_page_time_3d,feed_page_time_7d,feed_page_time_15d,detail_page_time_7d,detail_page_time_15d,video_playtime_1d,video_playtime_7d,video_playtime_15d,video_duration,freshness,validity_level,example_age,age_level,sex,degree,income_level,city_level,is_kg,is_dapan,os_type,moment_type,is_weixin,cur_hour,pics_num,group_id,publisher_id,singer_profile_sim_avg_7d,singer_profile_sim_max_7d,singer_profile_sim_avg_long,singer_profile_sim_max_long,user_op_avg_sim,user_op_max_sim,ctr_current,ctr_short,ctr_near,playtime_score_short,playtime_score_near,read_score_current,read_score_short,cate_first,cate_second,cate_third,cate_1_7d,cate_1_15d,cate_1_30d,cate_1_90d,cate_2_7d,cate_2_15d,cate_2_30d,cate_2_90d,cate_3_7d,cate_3_15d,cate_3_30d,cate_3_90d,group_90d,publisher_90d,cate_first_weight,cate_second_weight,cate_third_weight,cate_1_7d_weight,cate_1_15d_weight,cate_1_30d_weight,cate_1_90d_weight,cate_2_7d_weight,cate_2_15d_weight,cate_2_30d_weight,cate_2_90d_weight,cate_3_7d_weight,cate_3_15d_weight,cate_3_30d_weight,cate_3_90d_weight,group_90d_weight,publisher_90d_weight",
+            "shard_policy": "FILE"
+        },
+        "train_args": {
+            "train_type": "compile_fit",
+            "batch_size": 1024,
+            "epochs": 10,
+            "num_samples": 6000000,
+            "num_val_samples": 350000,
+            "optimizer": {
+                "type": "adam",
+                "args": {
+                    "learning_rate": 0.001
+                }
+            },
+            "early_stopping": {
+                "monitor": "val_auc",
+                "mode": "max",
+                "patience": 3,
+                "min_delta": 0.002
+            },
+            "losses": "bce",
+            "metrics": [
+                [
+                    "auc",
+                    "bce"
+                ]
+            ]
+        },
+        "eval_args": {
+            "batch_size": 1024,
+            "metrics": [
+                [
+                    "bce",
+                    "auc"
+                ]
+            ],
+            "output_file": "model_eval_result.json"
+        }
+    }
+}

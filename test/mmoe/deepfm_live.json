@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "inputs": {
+    "defs": [
+      {"name": "u_log_days", "dtype":"float32", "self_weighted": true, "bucket_boundaries": [0.6705282, 0.8574403, 0.94877946, 0.9904514], "embedding_dim": 8},
+      {"name": "u_clicknum_1d", "dtype":"float32", "self_weighted": true, "bucket_boundaries": [0.08427629, 0.48723155], "embedding_dim": 8},
+      {"name": "a_clicknum_1d", "dtype":"float32", "self_weighted": true, "bucket_boundaries": [0.42021158, 0.5700243, 0.67173415, 0.74360335], "embedding_dim": 8},
+      {"name": "u_age_level", "dtype": "int64", "vocab_size": 11, "embedding_name": "age_level_emb", "embedding_dim": 16, "hash_type": "mod"},
+      {"name": "a_age", "dtype": "int64",  "vocab_size": 11, "embedding_name": "a_age_emb", "embedding_dim": 16, "hash_type": "mod"},
+      {"name": "anchor_id", "dtype": "int64",  "vocab_size": 20000, "embedding_name": "anchor_id_emb", "embedding_dim": 16, "hash_type": "mod"},
+      {"name": "u_click_seq", "dtype": "int64", "val_sep": "|", "vocab_size": 150, "embedding_name": "anchor_id_emb", "embedding_dim": 16, "embedding_combiner": "din",  "query": "anchor_id", "max_len": 50},
+      {"name": "a_kaibo_period", "dtype": "int64", "val_sep": "|", "vocab_size": 7, "embedding_name": "a_kaibo_period_emb", "embedding_dim": 16, "weight_col": "a_kaibo_period_weight"},
+      {"name": "a_kaibo_period_weight", "dtype": "float32",  "val_sep": "|"},
+      {"name": "clk_label", "dtype": "int64", "is_label": true}
+    ],
+    "groups": {
+      "wide": ["u_age_level", "a_age"],
+      "label": ["clk_label"]
+    }
+  }
+}
